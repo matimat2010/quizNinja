@@ -1,1 +1,1 @@
-# quizNoviceNinja
+# quizNinja
