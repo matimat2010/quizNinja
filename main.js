@@ -15,7 +15,18 @@ const view = {
             target.setAttribute(key, attributes[key]);
         }
         target.innerHTML = content;
-    }
+    },
+    start: document.getElementById('start'),
+    show(element){
+        element.style.display = 'block';
+        },
+    hide(element){
+        element.style.display = 'none';
+        }
+         
+        
+
+    
 };
 
 
@@ -34,7 +45,9 @@ start (quiz) {
     //main game loop
     for (const question of this.questions){
     this.question = question;
-    this.ask();    
+    this.ask();  
+    view.hide(view.start);
+
 }
 // end of main game loop
 this.gameOver();
@@ -60,12 +73,17 @@ alert(`Wrong! The correct answer was ${answer}`);
 },
 gameOver(){
     view.render(view.info,`Game Over, you scored ${this.score} point ${this.score !== 1? 's' : ''}`);
-}
+    view.show(view.start);
 
 }
 
+}
+
+view.start.addEventListener('click', () => game.start(quiz),false);
 
 
+
+    
    
 
 
